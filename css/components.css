@@ -1,0 +1,80 @@
+/* ---- kv rows (params/headers/env vars/form fields) ---- */
+.kv-row { display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); align-items: center; }
+.kv-row input { flex: 1; background-color: var(--bg-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: var(--spacing-sm) var(--spacing-md); color: var(--text-primary); font-family: var(--font-mono); font-size: 12px; outline: none; transition: border-color 0.15s; }
+.kv-row input:focus { border-color: var(--accent); }
+.kv-row input::placeholder { color: var(--text-muted); }
+.kv-row input[type="checkbox"] { flex: none; width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+.kv-row .btn-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: transparent; border: none; color: var(--text-muted); cursor: pointer; border-radius: var(--radius-sm); transition: all 0.15s; flex-shrink: 0; }
+.kv-row .btn-icon:hover { color: var(--error); background-color: rgba(248, 81, 73, 0.1); }
+.kv-row.disabled input:not([type="checkbox"]) { opacity: 0.4; text-decoration: line-through; }
+
+.btn-add { width: 100%; padding: var(--spacing-sm); background-color: var(--bg-elevated); border: 1px dashed var(--border-color); color: var(--text-secondary); font-family: var(--font-mono); font-size: 12px; cursor: pointer; border-radius: var(--radius-sm); transition: all 0.15s; margin-top: var(--spacing-sm); }
+.btn-add:hover { border-color: var(--accent); color: var(--accent); background-color: var(--accent-dim); }
+
+/* ---- generic buttons ---- */
+.btn { padding: var(--spacing-sm) var(--spacing-md); background-color: var(--bg-elevated); border: 1px solid var(--border-color); color: var(--text-secondary); font-family: var(--font-mono); font-size: 12px; cursor: pointer; border-radius: var(--radius-sm); transition: all 0.15s; display: inline-flex; align-items: center; gap: var(--spacing-sm); white-space: nowrap; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-danger:hover { border-color: var(--error); color: var(--error); background-color: rgba(248, 81, 73, 0.08); }
+.btn-primary { background-color: var(--accent); border-color: var(--accent); color: var(--bg-primary); font-weight: 600; }
+.btn-primary:hover { background-color: var(--accent-hover); color: var(--bg-primary); }
+.btn-clear { padding: var(--spacing-sm) var(--spacing-md); background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); font-family: var(--font-body); font-size: 12px; cursor: pointer; border-radius: var(--radius-sm); transition: all 0.15s; margin: var(--spacing-sm) var(--spacing-lg); }
+.btn-clear:hover { border-color: var(--error); color: var(--error); }
+
+/* ---- method badges ---- */
+.method-badge { font-family: var(--font-mono); font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: var(--radius-sm); text-transform: uppercase; flex-shrink: 0; }
+.method-badge.get { background-color: rgba(63, 185, 80, 0.15); color: var(--method-get); }
+.method-badge.post { background-color: rgba(240, 136, 62, 0.15); color: var(--method-post); }
+.method-badge.put { background-color: rgba(0, 217, 255, 0.15); color: var(--method-put); }
+.method-badge.patch { background-color: rgba(163, 113, 247, 0.15); color: var(--method-patch); }
+.method-badge.delete { background-color: rgba(248, 81, 73, 0.15); color: var(--method-delete); }
+.method-badge.head { background-color: rgba(139, 148, 158, 0.15); color: var(--method-head); }
+.method-badge.options { background-color: rgba(88, 166, 255, 0.15); color: var(--method-options); }
+
+/* ---- status badges ---- */
+.status-badge { font-family: var(--font-mono); font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: var(--radius-sm); }
+.status-2xx { background-color: rgba(63, 185, 80, 0.15); color: var(--status-2xx); }
+.status-3xx { background-color: rgba(0, 217, 255, 0.15); color: var(--status-3xx); }
+.status-4xx { background-color: rgba(210, 153, 34, 0.15); color: var(--status-4xx); }
+.status-5xx { background-color: rgba(248, 81, 73, 0.15); color: var(--status-5xx); }
+.status-err { background-color: rgba(248, 81, 73, 0.15); color: var(--error); }
+
+/* ---- pass/fail chips (tests) ---- */
+.chip { font-family: var(--font-mono); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; display: inline-flex; align-items: center; gap: 4px; }
+.chip-pass { background-color: rgba(63, 185, 80, 0.15); color: var(--success); }
+.chip-fail { background-color: rgba(248, 81, 73, 0.15); color: var(--error); }
+.chip-neutral { background-color: var(--bg-elevated); color: var(--text-muted); border: 1px solid var(--border-color); }
+
+/* ---- modal overlay ---- */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 500; }
+.modal-overlay.hidden { display: none; }
+.modal { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); width: 560px; max-width: 92vw; max-height: 84vh; display: flex; flex-direction: column; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+.modal-header { padding: var(--spacing-lg); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+.modal-title { font-family: var(--font-mono); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: var(--spacing-sm); }
+.modal-title i { color: var(--accent); }
+.modal-close { background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 16px; padding: var(--spacing-xs); }
+.modal-close:hover { color: var(--text-primary); }
+.modal-body { padding: var(--spacing-lg); overflow-y: auto; flex: 1; }
+.modal-footer { padding: var(--spacing-lg); border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: var(--spacing-sm); }
+.modal textarea.curl-input { width: 100%; min-height: 140px; background-color: var(--bg-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: var(--spacing-md); color: var(--text-primary); font-family: var(--font-mono); font-size: 12px; line-height: 1.6; outline: none; resize: vertical; }
+.modal textarea.curl-input:focus { border-color: var(--accent); }
+.modal-hint { font-size: 11px; color: var(--text-muted); margin-top: var(--spacing-sm); line-height: 1.5; }
+.modal-error { font-size: 12px; color: var(--error); margin-top: var(--spacing-sm); display: none; }
+.modal-error.visible { display: block; }
+
+.field-group { display: flex; flex-direction: column; gap: var(--spacing-xs); margin-bottom: var(--spacing-md); }
+.field-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+.field-input, .field-select { background-color: var(--bg-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: var(--spacing-md); color: var(--text-primary); font-family: var(--font-mono); font-size: 12px; outline: none; width: 100%; }
+.field-input:focus, .field-select:focus { border-color: var(--accent); }
+.field-input::placeholder { color: var(--text-muted); }
+
+.env-select-nav { background-color: var(--bg-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: var(--spacing-sm) var(--spacing-md); color: var(--text-primary); font-family: var(--font-mono); font-size: 12px; min-width: 160px; }
+.icon-btn-nav { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: var(--bg-elevated); border: 1px solid var(--border-color); color: var(--text-secondary); cursor: pointer; border-radius: var(--radius-sm); transition: all 0.15s; }
+.icon-btn-nav:hover { color: var(--accent); border-color: var(--accent); }
+
+.list-row { display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-sm) var(--spacing-md); border: 1px solid var(--border-color); border-radius: var(--radius-sm); margin-bottom: var(--spacing-sm); background-color: var(--bg-elevated); }
+.list-row.active { border-color: var(--accent); }
+.list-row-name { font-family: var(--font-mono); font-size: 12px; flex: 1; }
+.list-row-actions { display: flex; gap: 4px; }
+.list-row-actions button { background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 4px 6px; border-radius: var(--radius-sm); font-size: 11px; }
+.list-row-actions button:hover { color: var(--accent); background: var(--bg-hover); }
