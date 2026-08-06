@@ -4,6 +4,7 @@ import { renderKvRows } from './kvrows.js';
 import { showToast } from './toast.js';
 
 let editingEnvId = null;
+const MAX_ENV_NAME_LENGTH = 32;
 
 export function renderEnvNavSelect() {
     const sel = qs('#envNavSelect');
@@ -90,6 +91,14 @@ function renderEnvModal() {
 export function addEnvironment() {
     const name = prompt('Environment name:', `Environment ${state.environments.length + 1}`);
     if (!name || !name.trim()) return;
+    const trimmedName = name.trim();
+    if (trimmedName.length > MAX_ENV_NAME_LENGTH) {
+      showToast(
+        `Environment name must be ${MAX_ENV_NAME_LENGTH} characters or less.`,
+        "error",
+      );
+      return;
+    }
     const env = createEnvironment(name.trim());
     state.environments.push(env);
     editingEnvId = env.id;
@@ -104,7 +113,15 @@ function renameEnvironment(id) {
     if (!env) return;
     const name = prompt('Rename environment:', env.name);
     if (!name || !name.trim()) return;
-    env.name = name.trim();
+    const trimmedName = name.trim();
+    if (trimmedName.length > MAX_ENV_NAME_LENGTH) {
+      showToast(
+        `Environment name must be ${MAX_ENV_NAME_LENGTH} characters or less.`,
+        "error",
+      );
+      return;
+    }
+    env.name = trimmedName;
     persistEnvironments();
     renderEnvModal();
     renderEnvNavSelect();
